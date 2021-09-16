@@ -21,10 +21,10 @@ function Toggle({ on, setOn }: ToggleProps) {
   );
 }
 
-function useForm() {
+function useForm({ on }: { on: boolean }) {
   return useFormik({
     initialValues: {
-      on: false
+      on
     },
     validationSchema: Yup.object({
       on: Yup.boolean().required()
@@ -37,7 +37,8 @@ function useForm() {
 }
 
 export default function App() {
-  const form = useForm();
+  const [on, setOn] = React.useState(false);
+  const form = useForm({ on });
 
   return (
     <div className="App">
@@ -45,10 +46,7 @@ export default function App() {
       <h2>Start editing to see some magic happen!</h2>
 
       <form onSubmit={form.handleSubmit}>
-        <Toggle
-          on={form.values.on}
-          setOn={() => form.setFieldValue("on", !form.values.on)}
-        />
+        <Toggle on={form.values.on} setOn={() => setOn(!on)} />
 
         <div>
           <button type="submit">submit</button>
