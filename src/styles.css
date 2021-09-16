@@ -1,0 +1,17 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.Toggle button {
+  border: none;
+  padding: 6px 12px;
+}
+
+.Toggle--on {
+  background-color: green;
+}
+
+.Toggle--off {
+  background-color: red;
+}
